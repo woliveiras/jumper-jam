@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
+
 var speed: float = 300.0
+var gravity: float = 15.0
+var max_fall_velocity = 1000.0
+
 var viewport_size
 
 func _ready() -> void:
@@ -10,8 +14,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_axis("move_left", "move_right")
+	velocity.y += gravity
+	if velocity.y > max_fall_velocity:
+		velocity.y = max_fall_velocity
 	
+	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * speed
 	else:
