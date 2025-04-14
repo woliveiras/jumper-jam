@@ -13,3 +13,11 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# mobile-specific ignores
+/android/
+/apple/
+/ios/
+
+# MacOS-specific ignores
+*.DS_Store
