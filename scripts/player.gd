@@ -1,9 +1,10 @@
 extends CharacterBody2D
-
+class_name Player
 
 var speed: float = 300.0
 var gravity: float = 15.0
 var max_fall_velocity = 1000.0
+var jump_velocity = -800
 
 var viewport_size
 
@@ -32,3 +33,6 @@ func _physics_process(delta: float) -> void:
 
 	if global_position.x < -margin:
 		global_position.x = viewport_size.x + margin
+
+func jump():
+	velocity.y = jump_velocity
