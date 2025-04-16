@@ -13,7 +13,7 @@ var viewport_size
 func _ready() -> void:
 	viewport_size = get_viewport_rect().size
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if velocity.y > 0:
 		if animator.current_animation != "fall":
 			animator.play("fall")
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 			animator.play("jump")
 		
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity.y += gravity
 	if velocity.y > max_fall_velocity:
 		velocity.y = max_fall_velocity

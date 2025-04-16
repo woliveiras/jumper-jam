@@ -20,7 +20,7 @@ func _ready() -> void:
 	start_platform_y = viewport_size.y - (y_distance_between_platforms * 2)
 	generate_level(start_platform_y, true)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player:
 		var player_y = player.global_position.y 
 		var end_of_level_pos = start_platform_y - (generated_platform_count * y_distance_between_platforms)
