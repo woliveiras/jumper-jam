@@ -51,8 +51,8 @@ func new_game():
 func get_parallax_sprite_scale(parallax_sprite: Sprite2D):
 	var parallax_texture = parallax_sprite.get_texture()
 	var parallax_texture_width = parallax_texture.get_width()
-	var scale = viewport_size.x / parallax_texture_width
-	var result = Vector2(scale, scale)
+	var parallax_scale = viewport_size.x / parallax_texture_width
+	var result = Vector2(parallax_scale, parallax_scale)
 	
 	return result
 
