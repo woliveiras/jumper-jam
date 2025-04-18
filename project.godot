@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Jumper Jam"
-run/main_scene="uid://bn7oowtysw67o"
+run/main_scene="uid://b1fxbepx11qji"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameUtils="*res://scripts/utils.gd"
 
 [display]
 

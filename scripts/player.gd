@@ -54,3 +54,4 @@ func _physics_process(_delta: float) -> void:
 
 func jump():
 	velocity.y = jump_velocity
+	GameUtils.log_message("JUMP!")
