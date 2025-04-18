@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc38sjki8wxat"]
+[gd_scene load_steps=8 format=3 uid="uid://dc38sjki8wxat"]
 
 [ext_resource type="Texture2D" uid="uid://cxopdhb8tkfg5" path="res://assets/textures/ui/Box02.png" id="1_gchx3"]
+[ext_resource type="Script" uid="uid://bstb2expk6fy6" path="res://scripts/base_screen.gd" id="1_o31j6"]
 [ext_resource type="Texture2D" uid="uid://bwdjlmtjc1g43" path="res://assets/textures/ui/PausedText.png" id="2_qeunj"]
 [ext_resource type="PackedScene" uid="uid://cfjen0lxlwm5j" path="res://scenes/screen_button.tscn" id="3_27awe"]
 [ext_resource type="Texture2D" uid="uid://br825yk4hga43" path="res://assets/textures/ui/RestartBtn.png" id="4_duq8p"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o31j6")
 
 [node name="BlackBG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -55,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_qeunj")
 
-[node name="PauseScreenRetry" parent="Box" instance=ExtResource("3_27awe")]
+[node name="PauseRetry" parent="Box" instance=ExtResource("3_27awe")]
 layout_mode = 0
 offset_left = 110.5
 offset_top = 218.0
@@ -65,7 +67,7 @@ texture_normal = ExtResource("4_duq8p")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PauseScreenBack" parent="Box" instance=ExtResource("3_27awe")]
+[node name="PauseBack" parent="Box" instance=ExtResource("3_27awe")]
 offset_left = 284.5
 offset_top = 218.0
 offset_right = 391.5
@@ -74,7 +76,7 @@ texture_normal = ExtResource("5_duq8p")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CloseButton" parent="Box" instance=ExtResource("3_27awe")]
+[node name="PauseClose" parent="Box" instance=ExtResource("3_27awe")]
 offset_left = 410.5
 offset_top = 3.0
 offset_right = 477.5
