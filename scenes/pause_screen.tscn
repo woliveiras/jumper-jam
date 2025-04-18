@@ -55,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_qeunj")
 
-[node name="RestartButton" parent="Box" instance=ExtResource("3_27awe")]
+[node name="PauseScreenRetry" parent="Box" instance=ExtResource("3_27awe")]
 layout_mode = 0
 offset_left = 110.5
 offset_top = 218.0
@@ -65,7 +65,7 @@ texture_normal = ExtResource("4_duq8p")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="MenuButton" parent="Box" instance=ExtResource("3_27awe")]
+[node name="PauseScreenBack" parent="Box" instance=ExtResource("3_27awe")]
 offset_left = 284.5
 offset_top = 218.0
 offset_right = 391.5
