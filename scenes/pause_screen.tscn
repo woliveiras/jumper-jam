@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc38sjki8wxat"]
+
+[ext_resource type="Texture2D" uid="uid://cxopdhb8tkfg5" path="res://assets/textures/ui/Box02.png" id="1_gchx3"]
+[ext_resource type="Texture2D" uid="uid://bwdjlmtjc1g43" path="res://assets/textures/ui/PausedText.png" id="2_qeunj"]
+[ext_resource type="PackedScene" uid="uid://cfjen0lxlwm5j" path="res://scenes/screen_button.tscn" id="3_27awe"]
+[ext_resource type="Texture2D" uid="uid://br825yk4hga43" path="res://assets/textures/ui/RestartBtn.png" id="4_duq8p"]
+[ext_resource type="Texture2D" uid="uid://dl4xt28qhh70x" path="res://assets/textures/ui/menuBtn.png" id="5_duq8p"]
+[ext_resource type="Texture2D" uid="uid://cxexw52ij7elv" path="res://assets/textures/ui/Closebtn2.png" id="6_k26m1"]
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.666667)
+
+[node name="Box" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.5
+offset_top = -202.0
+offset_right = 253.5
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gchx3")
+expand_mode = 1
+
+[node name="PauseText" type="TextureRect" parent="Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -104.0
+offset_right = 189.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qeunj")
+
+[node name="RestartButton" parent="Box" instance=ExtResource("3_27awe")]
+layout_mode = 0
+offset_left = 110.5
+offset_top = 218.0
+offset_right = 217.5
+offset_bottom = 325.0
+texture_normal = ExtResource("4_duq8p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MenuButton" parent="Box" instance=ExtResource("3_27awe")]
+offset_left = 284.5
+offset_top = 218.0
+offset_right = 391.5
+offset_bottom = 325.0
+texture_normal = ExtResource("5_duq8p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CloseButton" parent="Box" instance=ExtResource("3_27awe")]
+offset_left = 410.5
+offset_top = 3.0
+offset_right = 477.5
+offset_bottom = 70.0
+texture_normal = ExtResource("6_k26m1")
+ignore_texture_size = true
+stretch_mode = 0
