@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://f40uh4nmfyls"]
+
+[ext_resource type="Script" uid="uid://d3n6a4mqvqds3" path="res://scripts/hud.gd" id="1_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://7owgrshl1aja" path="res://assets/textures/ui/ScoreBox.png" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://bgxqrd6ups4hf" path="res://assets/textures/ui/PauseBtn.png" id="2_oo0fn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ysmq")
+
+[node name="TopBarBG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.117647)
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="ScoreBox" type="TextureRect" parent="TopBar"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 269.0
+offset_bottom = 81.0
+texture = ExtResource("1_ahhtf")
+expand_mode = 1
+
+[node name="ScoreLabel" type="Label" parent="TopBar"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 253.0
+offset_bottom = 76.0
+text = "99999999999"
+label_settings = SubResource("LabelSettings_ahhtf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_right = -1.0
+offset_bottom = 90.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_oo0fn")
+ignore_texture_size = true
+stretch_mode = 3
+
+[connection signal="pressed" from="TopBar/PauseButton" to="." method="_on_pause_button_pressed"]

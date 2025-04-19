@@ -8,6 +8,9 @@ var player: Player = null
 var viewport_size
 
 func _ready() -> void:
+	if player:
+		global_position.y = player.global_position.y
+
 	viewport_size = get_viewport_rect().size
 	global_position.x = viewport_size.x /2
 	
@@ -34,12 +37,11 @@ func _process(_delta: float) -> void:
 		for area in overlapping_areas:
 			if area is Platform:
 				area.queue_free()
-		
 
 func _physics_process(_delta: float) -> void:
-	if player:
+	if player != null:
 		global_position.y = player.global_position.y
 
 func setup_camera(_player: Player):
-	if _player:
+	if _player != null:
 		player = _player

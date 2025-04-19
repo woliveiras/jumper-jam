@@ -29,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.666667)
 
-[node name="Box" type="TextureRect" parent="BlackBG"]
+[node name="Box" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,7 +45,7 @@ grow_vertical = 2
 texture = ExtResource("1_xx0b3")
 expand_mode = 1
 
-[node name="WellDone" type="TextureRect" parent="BlackBG/Box"]
+[node name="WellDone" type="TextureRect" parent="Box"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,7 +61,7 @@ grow_vertical = 2
 texture = ExtResource("2_xx0b3")
 expand_mode = 1
 
-[node name="ScoreLabel" type="Label" parent="BlackBG/Box"]
+[node name="ScoreLabel" type="Label" parent="Box"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,7 +78,7 @@ text = "Score: 9999"
 label_settings = SubResource("LabelSettings_xx0b3")
 horizontal_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="BlackBG/Box"]
+[node name="HighScoreLabel" type="Label" parent="Box"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,7 +95,7 @@ text = "Best: 9999"
 label_settings = SubResource("LabelSettings_xx0b3")
 horizontal_alignment = 1
 
-[node name="GameOverRetry" parent="BlackBG/Box" instance=ExtResource("3_nh6my")]
+[node name="GameOverRetry" parent="Box" instance=ExtResource("3_nh6my")]
 layout_mode = 0
 offset_left = 93.0
 offset_top = 434.5
@@ -105,7 +105,8 @@ texture_normal = ExtResource("4_4tlw3")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="GameOverBack" parent="BlackBG/Box" instance=ExtResource("3_nh6my")]
+[node name="GameOverBack" parent="Box" instance=ExtResource("3_nh6my")]
+layout_mode = 0
 offset_left = 267.0
 offset_top = 434.5
 offset_right = 374.0

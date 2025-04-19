@@ -4,8 +4,13 @@ extends CanvasLayer
 @onready var title_screen = $TitleScreen
 @onready var pause_screen = $PauseScreen
 @onready var game_over_screen = $GameOverScreen
+@onready var game_over_score_label = $GameOverScreen/Box/ScoreLabel
+@onready var game_over_highscore_label = $GameOverScreen/Box/HighScoreLabel
 
 var current_screen = null
+
+signal start_game 
+signal delete_level
 
 func _ready() -> void:
 	console.visible = false
@@ -30,7 +35,9 @@ func register_buttons():
 func _on_button_pressed(button):
 	match button.name:
 		"TitlePlay":
-			change_screen(pause_screen)
+			change_screen(null)
+			await(get_tree().create_timer(0.5).timeout)
+			start_game.emit()
 		"PauseRetry":
 			change_screen(game_over_screen)
 		"PauseBack":
@@ -38,9 +45,12 @@ func _on_button_pressed(button):
 		"PauseClose":
 			change_screen(pause_screen)
 		"GameOverRetry":
-			change_screen(title_screen)
+			change_screen(null)
+			await(get_tree().create_timer(0.5).timeout)
+			start_game.emit()
 		"GameOverBack":
-			change_screen(pause_screen)
+			change_screen(title_screen)
+			delete_level.emit()
 
 func change_screen(screen_name):
 	if current_screen:
@@ -53,3 +63,8 @@ func change_screen(screen_name):
 		var appear_tween = current_screen.appear()
 		await(appear_tween.finished)
 		get_tree().call_group("buttons", "set_disabled", false)
+
+func game_over(score, highscore):
+	game_over_score_label.text = "Score: " + str(score)
+	game_over_highscore_label.text = "Best: " + str(highscore)
+	change_screen(game_over_screen)
