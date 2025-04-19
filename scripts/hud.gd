@@ -18,7 +18,6 @@ func _ready() -> void:
 		top_bar_bg.size.y += safe_area_top
 
 func _on_pause_button_pressed() -> void:
-	SoundFX.play("CLICK")
 	pause_game.emit()
 
 func set_score(new_score: int):

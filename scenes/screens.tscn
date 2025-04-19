@@ -20,6 +20,7 @@ script = ExtResource("1_lewgl")
 [node name="GameOverScreen" parent="." instance=ExtResource("5_sybca")]
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
