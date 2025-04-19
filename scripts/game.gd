@@ -1,6 +1,7 @@
 extends Node2D
 
 signal player_died(score, highscore)
+signal pause_game
 
 @onready var level_generator = $LevelGenerator
 @onready var ground_sprite = $GroundSprite
@@ -36,6 +37,7 @@ func _ready() -> void:
 	
 	hud.visible = false
 	hud.set_score(0)
+	hud.pause_game.connect(_on_hud_pause_game)
 	ground_sprite.visible = false
 	load_highscore()
 	
@@ -48,7 +50,7 @@ func _process(_delta: float) -> void:
 	
 	if player != null:
 		if score < (viewport_size.y - player.global_position.y):
-			score = (viewport_size.y - player.global_position.y)
+			score = int(viewport_size.y - player.global_position.y)
 			hud.set_score(score)
 
 func new_game():
@@ -100,6 +102,7 @@ func reset_game():
 	level_generator.reset_level()
 	ground_sprite.visible = false
 	hud.set_score(0)
+	hud.visible = false
 	
 	if player != null:
 		player.queue_free()
@@ -122,3 +125,6 @@ func load_highscore():
 		file.close()
 	else:
 		highscore = 0
+
+func _on_hud_pause_game():
+	pause_game.emit()
