@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb64ys7uax048"]
+[gd_scene load_steps=11 format=3 uid="uid://bb64ys7uax048"]
 
 [ext_resource type="Texture2D" uid="uid://dg4aj63uek5lu" path="res://assets/textures/character/Skin1Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dd7hvqn84hhog" path="res://scripts/player.gd" id="1_qhqgy"]
@@ -131,6 +131,12 @@ _data = {
 &"jump": SubResource("Animation_qhqgy")
 }
 
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_u5sy4"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_qhqgy"]
+mesh = SubResource("PlaceholderMesh_u5sy4")
+image_size = Vector2(304, 610)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_qhqgy")
@@ -152,5 +158,19 @@ libraries = {
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.5, -7)
 scale = Vector2(2.95, 1.7)
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+process_mode = 1
+position = Vector2(1.42109e-14, -822)
+scale = Vector2(2.89474, 2.69508)
+texture_normal = SubResource("MeshTexture_qhqgy")
+action = "move_right"
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+process_mode = 1
+position = Vector2(-949, -822)
+scale = Vector2(3.11513, 2.69508)
+texture_normal = SubResource("MeshTexture_qhqgy")
+action = "move_left"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -21,7 +21,7 @@ var viewport_size
 func _ready() -> void:
 	viewport_size = get_viewport_rect().size
 	var os_name = OS.get_name()
-	if os_name == "Android" || os_name == "iOS" || os_name == "Web":
+	if os_name == "Android" || os_name == "iOS":
 		use_accelerometer = true
 
 func _process(_delta: float) -> void:
