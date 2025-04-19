@@ -16,6 +16,9 @@ var player_spawn_pos: Vector2
 var player: Player = null 
 var camera: GameCamera = null
 var viewport_size: Vector2
+var score: int = 0
+var highscore: int = 0
+var save_file_path = "user://highscore.save"
 
 func _ready() -> void:
 	viewport_size = get_viewport_rect().size
@@ -32,7 +35,9 @@ func _ready() -> void:
 	setup_parallax_layer(parallax_3)
 	
 	hud.visible = false
+	hud.set_score(0)
 	ground_sprite.visible = false
+	load_highscore()
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -41,6 +46,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	
+	if player != null:
+		if score < (viewport_size.y - player.global_position.y):
+			score = (viewport_size.y - player.global_position.y)
+			hud.set_score(score)
+
 func new_game():
 	reset_game()
 	player = player_scene.instantiate()
@@ -58,6 +68,7 @@ func new_game():
 	level_generator.start_generation()
 	hud.visible = true
 	ground_sprite.visible = true
+	score = 0
 
 func get_parallax_sprite_scale(parallax_sprite: Sprite2D):
 	var parallax_texture = parallax_sprite.get_texture()
@@ -78,11 +89,17 @@ func setup_parallax_layer(parallax_layer: ParallaxLayer):
 		
 func _on_player_died():
 	hud.visible = false
-	player_died.emit(1999, 9999)
+	
+	if score > highscore:
+		highscore = score
+		save_highscore()
+		
+	player_died.emit(score, highscore)
 
 func reset_game():
 	level_generator.reset_level()
 	ground_sprite.visible = false
+	hud.set_score(0)
 	
 	if player != null:
 		player.queue_free()
@@ -92,3 +109,16 @@ func reset_game():
 	if camera != null:
 		camera.queue_free()
 		camera = null
+
+func save_highscore():
+	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	file.store_var(highscore)
+	file.close()
+
+func load_highscore():
+	if FileAccess.file_exists(save_file_path):
+		var file = FileAccess.open(save_file_path, FileAccess.READ)
+		highscore = file.get_var()
+		file.close()
+	else:
+		highscore = 0
